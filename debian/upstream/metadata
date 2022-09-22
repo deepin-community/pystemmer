@@ -1,0 +1,9 @@
+---
+Bug-Database: https://github.com/snowballstem/pystemmer/issues
+Bug-Submit: https://github.com/snowballstem/pystemmer/issues/new
+Changelog: https://github.com/snowballstem/pystemmer/blob/master/ChangeLog
+Registry:
+  - Name: PyPI
+    Entry: PyStemmer
+Repository-Browse: https://github.com/snowballstem/pystemmer/
+Repository: https://github.com/snowballstem/pystemmer.git

@@ -1,0 +1,12 @@
+#!/bin/sh
+set -efu
+
+pythons="$(py3versions -r 2> /dev/null)"
+
+cp -a tests "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+for python in $pythons; do
+	echo "=== $python ==="
+	$python -m unittest discover -s tests
+done

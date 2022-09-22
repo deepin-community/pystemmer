@@ -1,0 +1,58 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Mon, 25 Jan 2021 13:18:56 -0700
+Subject: Update to Snowball 2.1.0
+
+The doctest broke when snowball 2.1.0 added new algorithms.
+
+Forwarded: https://github.com/snowballstem/pystemmer/pull/32
+---
+ docs/quickstart.txt         | 2 +-
+ docs/quickstart_python3.txt | 2 +-
+ setup.py                    | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/docs/quickstart.txt b/docs/quickstart.txt
+index c3b70f3..5c5e4b5 100644
+--- a/docs/quickstart.txt
++++ b/docs/quickstart.txt
+@@ -10,7 +10,7 @@ First, import the library:
+ Just for show, we'll display a list of the available stemming algorithms:
+ 
+ >>> print(Stemmer.algorithms())
+-[u'arabic', u'basque', u'catalan', u'danish', u'dutch', u'english', u'finnish', u'french', u'german', u'greek', u'hindi', u'hungarian', u'indonesian', u'irish', u'italian', u'lithuanian', u'nepali', u'norwegian', u'porter', u'portuguese', u'romanian', u'russian', u'spanish', u'swedish', u'tamil', u'turkish']
++[u'arabic', u'armenian', u'basque', u'catalan', u'danish', u'dutch', u'english', u'finnish', u'french', u'german', u'greek', u'hindi', u'hungarian', u'indonesian', u'irish', u'italian', u'lithuanian', u'nepali', u'norwegian', u'porter', u'portuguese', u'romanian', u'russian', u'serbian', u'spanish', u'swedish', u'tamil', u'turkish', u'yiddish']
+ 
+ Now, we'll get an instance of the english stemming algorithm:
+ 
+diff --git a/docs/quickstart_python3.txt b/docs/quickstart_python3.txt
+index 02b5332..4d80d26 100644
+--- a/docs/quickstart_python3.txt
++++ b/docs/quickstart_python3.txt
+@@ -10,7 +10,7 @@ First, import the library:
+ Just for show, we'll display a list of the available stemming algorithms:
+ 
+ >>> print(Stemmer.algorithms())
+-['arabic', 'basque', 'catalan', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'greek', 'hindi', 'hungarian', 'indonesian', 'irish', 'italian', 'lithuanian', 'nepali', 'norwegian', 'porter', 'portuguese', 'romanian', 'russian', 'spanish', 'swedish', 'tamil', 'turkish']
++['arabic', 'armenian', 'basque', 'catalan', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'greek', 'hindi', 'hungarian', 'indonesian', 'irish', 'italian', 'lithuanian', 'nepali', 'norwegian', 'porter', 'portuguese', 'romanian', 'russian', 'serbian', 'spanish', 'swedish', 'tamil', 'turkish', 'yiddish']
+ 
+ Now, we'll get an instance of the english stemming algorithm:
+ 
+diff --git a/setup.py b/setup.py
+index 76d4c70..3b3cd0e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -34,11 +34,11 @@ class LibrarySourceCode:
+     # Directories in libstemmer which contain libstemmer sources (ie, not
+     # examples, etc).
+     LIBRARY_CORE_DIRS = ('src_c', 'runtime', 'libstemmer', 'include')
+-    DEFAULT_URI = 'https://snowballstem.org/dist/libstemmer_c.tgz'
++    DEFAULT_URI = 'https://snowballstem.org/dist/libstemmer_c-2.1.0.tar.gz'
+     DEFAULT_CHECKSUM = \
+-        '054e76f2a05478632f2185025bff0b98952a2b7aed7c4e0960d72ba565de5dfc'
++        '8c148d3a27745981d29db4909681ec1bc922950b1ade45a01846edea2fb161e6'
+ 
+-    def __init__(self, directory = 'libstemmer_c'):
++    def __init__(self, directory = 'libstemmer_c-2.1.0'):
+         """ Constructor.
+ 
+         :param str directory: Path to directory where source code should
