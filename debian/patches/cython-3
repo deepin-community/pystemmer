@@ -1,0 +1,24 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Sat, 25 Nov 2023 16:29:42 +0000
+Subject: Unrestrict cython maximum version
+
+Allowing us to build with Cython 3.
+
+Forwarded: https://github.com/snowballstem/pystemmer/pull/43
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 2d8c512..f6ccbb3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -208,7 +208,7 @@ setup(name='PyStemmer',
+           "Topic :: Text Processing :: Indexing",
+           "Topic :: Text Processing :: Linguistic",
+       ],
+-      setup_requires=['Cython>=0.28.5,<1.0', 'setuptools>=18.0'],
++      setup_requires=['Cython>=0.28.5', 'setuptools>=18.0'],
+       ext_modules=[
+           C_EXTENSION
+       ],

@@ -2,15 +2,9 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: PyStemmer
 Upstream-Contact: Richard Boulton <richard@tartarus.org>
 Source: https://pypi.org/project/PyStemmer/
-Comment: Repackaged:
- Removed bundled libstemmer_c from source, as we build against Debian's
- libstemmer shared library. libstemmer_c was generated from Snowball source,
- but the source wasn't included, violating DFSG #2.
-Files-Excluded:
- libstemmer_c
 
 Files: *
-Copyright: 2006-2020, Richard Boulton
+Copyright: 2006-2023, Richard Boulton
 License: Expat
 Comment:
  It was inspired by an earlier implementation of PyStemmer (version 0.10, which
@@ -53,7 +47,7 @@ Copyright: 1997-2006, Simon Tatham
 License: Expat
 
 Files: debian/*
-Copyright: 2010-2021, Stefano Rivera <stefanor@debian.org>
+Copyright: 2010-2023, Stefano Rivera <stefanor@debian.org>
 License: Expat
 
 License: Expat

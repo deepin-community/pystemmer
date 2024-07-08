@@ -1,3 +1,31 @@
+pystemmer (2.2.0.1-2) unstable; urgency=medium
+
+  * Patch: Allow building with Cython 3.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 25 Nov 2023 16:37:40 +0000
+
+pystemmer (2.2.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - DFSG repack no longer needed, upstream dropped the bundled libstemmer.
+  * Drop patches, superseded upstream.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 26 Jan 2023 13:54:34 -0400
+
+pystemmer (2.2.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop patch snowball-2.1.0, superseded upstream.
+  * Update copyright Files-Excluded, for versioned libstemmer.
+  * Bump copyright years.
+  * Patch: Fix doctest locations, reorganized upstream.
+  * Replace patch link-pystemmer with upstream equivalent.
+  * Bump Standards-Version to 4.6.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 09 Dec 2022 18:11:36 -0400
+
 pystemmer (2.0.1+dfsg-3) unstable; urgency=medium
 
   [ Debian Janitor ]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from setuptools import setup, Command, Extension
-import os.path
+import os
 
 
 long_description = r"""
@@ -26,19 +26,23 @@ researchers wishing to reproduce results of earlier experiments.
 
 """.strip()
 
-version_str = '2.0.1'
-
+version_str = '2.2.0.1'
+# libstemmer_c versions have 3 components but pystemmer versions may have more
+# (so we can address a pystemmer-specific issue without having to wait for the
+# next libstemmer_c release) so take the first 3 components from version_str.
+libstemmer_c_version = '.'.join(version_str.split('.')[0:3])
 
 class LibrarySourceCode:
 
     # Directories in libstemmer which contain libstemmer sources (ie, not
     # examples, etc).
     LIBRARY_CORE_DIRS = ('src_c', 'runtime', 'libstemmer', 'include')
-    DEFAULT_URI = 'https://snowballstem.org/dist/libstemmer_c.tgz'
+    DEFAULT_URI = 'https://snowballstem.org/dist/libstemmer_c-%s.tar.gz' % \
+        libstemmer_c_version
     DEFAULT_CHECKSUM = \
-        '054e76f2a05478632f2185025bff0b98952a2b7aed7c4e0960d72ba565de5dfc'
+        'b941d9fe9cf36b4e2f8d3873cd4d8b8775bd94867a1df8d8c001bb8b688377c3'
 
-    def __init__(self, directory = 'libstemmer_c'):
+    def __init__(self, directory='libstemmer_c-%s' % libstemmer_c_version):
         """ Constructor.
 
         :param str directory: Path to directory where source code should
@@ -109,8 +113,22 @@ class LibrarySourceCode:
 
 
 LIBRARY_SOURCE_CODE = LibrarySourceCode()
-if not LIBRARY_SOURCE_CODE.is_present_on_disk():
-    LIBRARY_SOURCE_CODE.download()
+
+SYSTEM_LIBSTEMMER = os.environ.get('PYSTEMMER_SYSTEM_LIBSTEMMER', False)
+if SYSTEM_LIBSTEMMER:
+    C_EXTENSION = Extension(
+        'Stemmer',
+        ['src/Stemmer.pyx'],
+        libraries=['stemmer'],
+    )
+else:
+    if not LIBRARY_SOURCE_CODE.is_present_on_disk():
+        LIBRARY_SOURCE_CODE.download()
+    C_EXTENSION = Extension(
+        'Stemmer',
+        ['src/Stemmer.pyx'] + list(LIBRARY_SOURCE_CODE.source_code_paths()),
+        include_dirs=LIBRARY_SOURCE_CODE.include_directories
+    )
 
 
 class BootstrapCommand(Command):
@@ -176,12 +194,15 @@ setup(name='PyStemmer',
           "Programming Language :: Python :: 2.6",
           "Programming Language :: Python :: 2.7",
           "Programming Language :: Python :: 3",
-          "Programming Language :: Python :: 3.2",
           "Programming Language :: Python :: 3.3",
           "Programming Language :: Python :: 3.4",
           "Programming Language :: Python :: 3.5",
           "Programming Language :: Python :: 3.6",
           "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
           "Topic :: Database",
           "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
           "Topic :: Text Processing :: Indexing",
@@ -189,11 +210,7 @@ setup(name='PyStemmer',
       ],
       setup_requires=['Cython>=0.28.5,<1.0', 'setuptools>=18.0'],
       ext_modules=[
-        Extension(
-            'Stemmer',
-            ['src/Stemmer.pyx'] + list(LIBRARY_SOURCE_CODE.source_code_paths()),
-            include_dirs=LIBRARY_SOURCE_CODE.include_directories
-        )
+          C_EXTENSION
       ],
       cmdclass={'bootstrap': BootstrapCommand}
       )

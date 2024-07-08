@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
 export PYBUILD_NAME=stemmer
+export PYSTEMMER_SYSTEM_LIBSTEMMER=1
 
 %:
 	dh $@ --with python3 --buildsystem pybuild

@@ -1,6 +1,6 @@
-Metadata-Version: 1.2
+Metadata-Version: 2.1
 Name: PyStemmer
-Version: 2.0.1
+Version: 2.2.0.1
 Summary: Snowball stemming algorithms, for information retrieval
 Home-page: https://github.com/snowballstem/pystemmer/
 Author: Richard Boulton
@@ -8,24 +8,6 @@ Author-email: richard@tartarus.org
 Maintainer: Richard Boulton
 Maintainer-email: richard@tartarus.org
 License: MIT, BSD
-Description: Stemming algorithms
-        
-        PyStemmer provides access to efficient algorithms for calculating a
-        "stemmed" form of a word.  This is a form with most of the common
-        morphological endings removed; hopefully representing a common
-        linguistic base form.  This is most useful in building search engines
-        and information retrieval software; for example, a search with stemming
-        enabled should be able to find a document containing "cycling" given the
-        query "cycles".
-        
-        PyStemmer provides algorithms for several (mainly european) languages,
-        by wrapping the libstemmer library from the Snowball project in a Python
-        module.
-        
-        It also provides access to the classic Porter stemming algorithm for
-        english: although this has been superseded by an improved algorithm, the
-        original algorithm may be of interest to information retrieval
-        researchers wishing to reproduce results of earlier experiments.
 Keywords: python,information retrieval,language processing,morphological analysis,stemming algorithms,stemmers
 Platform: any
 Classifier: Development Status :: 5 - Production/Stable
@@ -52,13 +34,37 @@ Classifier: Programming Language :: Python :: 2
 Classifier: Programming Language :: Python :: 2.6
 Classifier: Programming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.2
 Classifier: Programming Language :: Python :: 3.3
 Classifier: Programming Language :: Python :: 3.4
 Classifier: Programming Language :: Python :: 3.5
 Classifier: Programming Language :: Python :: 3.6
 Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
 Classifier: Topic :: Database
 Classifier: Topic :: Internet :: WWW/HTTP :: Indexing/Search
 Classifier: Topic :: Text Processing :: Indexing
 Classifier: Topic :: Text Processing :: Linguistic
+License-File: LICENSE
+License-File: AUTHORS
+
+Stemming algorithms
+
+PyStemmer provides access to efficient algorithms for calculating a
+"stemmed" form of a word.  This is a form with most of the common
+morphological endings removed; hopefully representing a common
+linguistic base form.  This is most useful in building search engines
+and information retrieval software; for example, a search with stemming
+enabled should be able to find a document containing "cycling" given the
+query "cycles".
+
+PyStemmer provides algorithms for several (mainly european) languages,
+by wrapping the libstemmer library from the Snowball project in a Python
+module.
+
+It also provides access to the classic Porter stemming algorithm for
+english: although this has been superseded by an improved algorithm, the
+original algorithm may be of interest to information retrieval
+researchers wishing to reproduce results of earlier experiments.
