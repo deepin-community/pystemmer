@@ -1,1 +1,11 @@
-.pc/
+build
+dist
+libstemmer_c-*
+html
+MANIFEST
+Stemmer.so
+.eggs
+.tox
+src/Stemmer.c
+*.pyc
+__pycache__
